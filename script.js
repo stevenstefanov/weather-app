@@ -24,7 +24,8 @@ function buildSearchHistory(city){
 
   var cityButton = buildButton("button", "btn btn-secondary submit-saved-city", "type", "button", city);  
   li.appendChild(cityButton);
-  searchHistoryEl.appendChild(li);  
+  searchHistoryEl.appendChild(li);
+  localStorage.setItem("searchHistoryElements", JSON.stringify(searchHistoryEl.innerHTML));  
   cityButton.addEventListener("click", callHistory);
 }
 
@@ -148,51 +149,26 @@ async function searchCity(){
   searchEl.value = "";
 }
 
-// Function to save search history elements to localStorage
-function storeHistory(){
-    localStorage.setItem("searchHistoryElements", JSON.stringify(searchHistoryEl.innerHTML));
-}
-
-// Function to reload save search history elements from localStorage
+// Function to reload search history from localStorage
 function restoreHistory(){
-    searchHistoryEl.innerHTML = JSON.parse(localStorage.getItem("searchHistoryElements"));
-    var closeButton = document.querySelectorAll(".close");
-    var cityButton = document.querySelectorAll(".submit-saved-city");
-    for (var i = 0; i < searchHistoryEl.childElementCount; i++){
-        cityButton[i].addEventListener("click", callHistory);
-    }
+  searchHistoryEl.innerHTML = JSON.parse(localStorage.getItem("searchHistoryElements"));
+  var cityButton = document.querySelectorAll(".submit-saved-city");
+  for (var i = 0; i < searchHistoryEl.childElementCount; i++){
+    cityButton[i].addEventListener("click", callHistory);
+  }
 }
 
-// Function to save current city weather elements to localStorage
-function storeCurrentCity(){
-    localStorage.setItem("currentWeatherElements", JSON.stringify(currentWeatherEl.innerHTML));
-}
-
-// Async function to reload saved city weather elements from localStorage, then refreshes it with current data
-async function restoreCurrentCity(){
-    currentWeatherEl.innerHTML = await JSON.parse(localStorage.getItem("currentWeatherElements"));
-    var currentCityValue = currentWeatherEl.firstElementChild.firstElementChild.firstElementChild.firstElementChild.textContent
-    await callWeather(currentCityValue);
-    removeHTML(".current-weather");
-    buildWeatherMain();
-    buildForecast();
-}
-
-// localStorage checks upon page load, if valid key-value pairs exist, load them to the page
+// localStorage items load to the page
 if (localStorage.searchHistoryElements === undefined && localStorage.currentWeatherElements === undefined){
-    console.log("Nothing in localStorage!");
-} else {
-    if (localStorage.searchHistoryElements){
-        restoreHistory();
-    }
-    if (localStorage.currentWeatherElements){
-    restoreCurrentCity();
-    }
+  console.log("localStorage is empty.");
+} 
+else {
+  restoreHistory();
 }
 
-// Event Listener for searching, which replaces the current city data with what is searched
+// Event Listener for searches
 searchButtonEl.addEventListener("click", (event)=>{
-    event.preventDefault();
-    removeHTML(".current-weather");
-    searchCity();
+  event.preventDefault();
+  removeHTML(".current-weather");
+  searchCity();
 });
