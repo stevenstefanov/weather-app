@@ -17,24 +17,30 @@
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-    <div class="row">
-        <div class="col-4 bg-light">
-            <p>Search for a city:</p>
-            <nav class="navbar navbar-light bg-light">
-                <form class="form-inline">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-              </nav>
-              <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
+    <main class="flex-row justify-space-between">
+      <div class="col-12 col-md-4 bg-light">
+        <p class="search">Search for a city:</p> 
+        <nav class="navbar navbar-light bg-light">
+          <form class="form-inline" id="user-form">
+            <input name="cityname" id="cityname" class="form-input form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 submit-search" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg></button>
+          </form>
+        </nav>
+        <ul class="list-group search-history"></ul>
+      </div>
+
+      <div class="col-12 col-md-8">
+        <h2 class="subtitle" id="weather-search-term"></h2>
+        <div id="weather-container" class="list-group">
+          <article class="d-flex flex-wrap justify-content-center col-9 current-weather">
+          </article>
         </div>
-    </div>
+      </div>
+
+    </main>
     
+    <script src="./script.js"></script>
 </body>
 </html>
