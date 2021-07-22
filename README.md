@@ -1,16 +1,20 @@
 # weather-app
 
-## What is the project?
+## Project Description
 
-This project is a weather forcasting app that lets user enter city name and displays current weather information and a 5 day forcast.
+This project is a weather forcasting app that lets users enter a city name and displays current weather information and a 5-day forecast.
+
+## Project Screenshot  
+
+![Project Screenshot](assets/screenshot_stevenstefanov.png)
+ 
+## Link to Deployed Project  
+
+https://stevenstefanov.github.io/weather-forecast/
 
 ## What were the challenges?
 
-It was pretty challenging defining all the individual pieces of data for the weather cards such as the wind speed, the uv lighting, etc. It was also challenging to modify the DOM a lot through JavaScript.
-
-## What was updated?
-
-This project was created from scratch so nothing was updated.
+It was pretty challenging defining all the individual pieces of data for the weather cards such as the wind speed, the UV lighting, etc. It was also challenging to modify the DOM a lot through JavaScript.
 
 ## Why did I decide to do this project?
 
@@ -23,11 +27,3 @@ I learned so much more about how to manipulate the DOM, how to use server APIs a
 ## What makes this project stand out?
 
 This is a good project that exemplifies the use of localStorage, server-side APIs, and all together HTML, CSS, and JS knowledge.
-
-## Project Screenshot  
-
-![Project Screenshot](assets/screenshot_stevenstefanov.png)
- 
-## Link to Deployed Project  
-
-https://stevenstefanov.github.io/weather-app/
